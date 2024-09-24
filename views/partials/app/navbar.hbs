@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary z-3">
+    <div class="container">
+        <a class="navbar-brand" href="/">Tienda de Gimnasia</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {{#if (eq currentPath '/products')}}active{{/if}}" href="/products">
+                        <i class="fa-solid fa-dumbbell"></i> Productos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{#if (eq currentPath '/reports')}}active{{/if}}" href="/reports">
+                        <i class="fa-solid fa-chart-simple"></i> Reportes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{#if (eq currentPath '/profile')}}active{{/if}}" href="/profile">
+                        <i class="fa-solid fa-user"></i> Perfil
+                    </a>
+                </li>
+                <li class="nav-item" onclick="toggleCarrito()">
+                    <a class="nav-link {{#if (eq currentPath '/cart')}}active{{/if}}" href="#">
+                        <i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

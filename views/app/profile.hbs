@@ -1,0 +1,579 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Gimnasio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #E7662B;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #profile-pic {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat {
+            background-color: #e3e3e3;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat h3 {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #c55523;
+            border-color: #c55523;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+
+        .trainer-card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .event-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="profile-card p-4 text-center">
+                <label for="upload-photo" class="mb-3">
+                    <img id="profile-pic"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQcFMHlb9wYdLI2YPVYaQyM_Byl8dIRkIIDg&s"
+                        alt="Foto de perfil" class="rounded-circle mb-3">
+                    <input type="file" id="upload-photo" class="d-none" onchange="loadFile(event)">
+                </label>
+                <h2>Juan Pérez</h2>
+                <p class="text-muted">Miembro desde 2023</p>
+                <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                    Editar Perfil
+                </button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-card p-4">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 mb-3">
+                        <div class="stat p-3 text-center">
+                            <p class="mb-0">Entrenamientos</p>
+                            <h3>120</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 mb-3">
+                        <div class="stat p-3 text-center">
+                            <p class="mb-0">Calorías Quemadas</p>
+                            <h3>12,345</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 mb-3">
+                        <div class="stat p-3 text-center">
+                            <p class="mb-0">Frecuencia Cardíaca Prom.</p>
+                            <h3>85%</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 mb-3">
+                        <div class="stat p-3 text-center">
+                            <p class="mb-0">Logros</p>
+                            <h3>12</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-entrenamientos-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-entrenamientos" type="button">Entrenamientos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-nutricion-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-nutricion" type="button">Nutrición</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-progreso-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-progreso" type="button">Progreso</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-comunidad-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-comunidad" type="button">Comunidad</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-entrenadores-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-entrenadores" type="button">Mis Entrenadores</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-eventos-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-eventos" type="button">Eventos del Gimnasio</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-entrenamientos" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3>Próximos Entrenamientos</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Pecho y Tríceps
+                                <span class="badge bg-primary rounded-pill">Mañana, 6:00 PM</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Piernas y Abdomen
+                                <span class="badge bg-primary rounded-pill">Viernes, 7:30 AM</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Espalda y Bíceps
+                                <span class="badge bg-primary rounded-pill">Domingo, 9:00 AM</span>
+                            </li>
+                        </ul>
+                        <h3 class="mt-4">Rutina Actual</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ejercicio</th>
+                                        <th>Series</th>
+                                        <th>Repeticiones</th>
+                                        <th>Peso</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Press de Banca</td>
+                                        <td>4</td>
+                                        <td>8-10</td>
+                                        <td>80 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sentadillas</td>
+                                        <td>4</td>
+                                        <td>10-12</td>
+                                        <td>100 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dominadas</td>
+                                        <td>3</td>
+                                        <td>8-10</td>
+                                        <td>Peso corporal</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-nutricion" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3>Plan de Nutrición</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Macronutrientes Diarios</h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Proteínas
+                                        <span class="badge bg-primary rounded-pill">150g</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Carbohidratos
+                                        <span class="badge bg-primary rounded-pill">250g</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Grasas
+                                        <span class="badge bg-primary rounded-pill">70g</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Ejemplo de Comida</h4>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Desayuno</h5>
+                                        <p class="card-text">
+                                            - Avena con leche descremada<br>
+                                            - Claras de huevo<br>
+                                            - Frutas mixtas<br>
+                                            - Café negro
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h4>Suplementos Recomendados</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">Proteína en polvo</li>
+                                <li class="list-group-item">Creatina</li>
+                                <li class="list-group-item">Multivitamínico</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-progreso" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3>Rastreador de Progreso</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <canvas id="weightChart"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <canvas id="strengthChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h4>Medidas Corporales</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Medida</th>
+                                            <th>Inicial</th>
+                                            <th>Actual</th>
+                                            <th>Cambio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Peso</td>
+                                            <td>90 kg</td>
+                                            <td>84 kg</td>
+                                            <td class="text-success">-6 kg</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Grasa Corporal</td>
+                                            <td>20%</td>
+                                            <td>15%</td>
+                                            <td class="text-success">-5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Circunferencia de Pecho</td>
+                                            <td>100 cm</td>
+                                            <td>105 cm</td>
+                                            <td class="text-success">+5 cm</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-comunidad" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3>Comunidad del Gimnasio</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Próximos Eventos</h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <h5>Maratón Benéfica</h5>
+                                        <p>Fecha: 15 de Julio, 2023</p>
+                                        <button class="btn btn-sm btn-primary">Inscribirse</button>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h5>Clase Especial de Yoga</h5>
+                                        <p>Fecha: 22 de Julio, 2023</p>
+                                        <button class="btn btn-sm btn-primary">Reservar</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Foro de Discusión</h4>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Consejos para ganar masa muscular</h5>
+                                        <p class="card-text">Iniciado por: María G.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Ver discusión</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Recetas de batidos proteicos</h5>
+                                        <p class="card-text">Iniciado por: Carlos R.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Ver discusión</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-entrenadores" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3 class="mb-4">Mis Entrenadores</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card trainer-card h-100">
+                                    <img src="https://res.cloudinary.com/dvjfemxbz/image/upload/52ed56d8-a82f-4d67-b19e-e943f0ffe572_gxotyg.png"
+                                        class="card-img-top" alt="Entrenador 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carlos Rodríguez</h5>
+                                        <p class="card-text">Especialista en entrenamiento de fuerza y
+                                            acondicionamiento físico.</p>
+                                        <button class="btn btn-primary btn-sm">Ver perfil</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card trainer-card h-100">
+                                    <img src="https://media.vozpopuli.com/2021/11/21/entrenadores-personales-redes-sociales.jpg"
+                                        class="card-img-top" alt="Entrenador 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ana Martínez</h5>
+                                        <p class="card-text">Experta en yoga y pilates para mejorar flexibilidad y
+                                            equilibrio.</p>
+                                        <button class="btn btn-primary btn-sm">Ver perfil</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card trainer-card h-100">
+                                    <img src="https://mercadofitness.com/wp-content/uploads/2021/09/Dos-certificaciones-norteamericanas-de-entrenadores-llegan-a-Centroamerica-1.jpg"
+                                        class="card-img-top" alt="Entrenador 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Luis Gómez</h5>
+                                        <p class="card-text">Especializado en nutrición deportiva y pérdida de peso.
+                                        </p>
+                                        <button class="btn btn-primary btn-sm">Ver perfil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-eventos" role="tabpanel">
+                    <div class="profile-card p-4">
+                        <h3 class="mb-4">Eventos del Gimnasio</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card event-card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Maratón Benéfica</h5>
+                                        <p class="card-text">Participa en nuestra carrera anual para recaudar fondos
+                                            para la comunidad local.</p>
+                                        <p><strong>Fecha:</strong> 15 de Julio, 2023</p>
+                                        <p><strong>Hora:</strong> 8:00 AM</p>
+                                        <p><strong>Lugar:</strong> Parque Central</p>
+                                        <button class="btn btn-primary">Inscribirse</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card event-card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Clase Especial de Yoga</h5>
+                                        <p class="card-text">Únete a nuestra clase especial de yoga impartida por un
+                                            instructor invitado de renombre.</p>
+                                        <p><strong>Fecha:</strong> 22 de Julio, 2023</p>
+                                        <p><strong>Hora:</strong> 10:00 AM</p>
+                                        <p><strong>Lugar:</strong> Sala de Yoga</p>
+                                        <button class="btn btn-primary">Reservar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card event-card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Taller de Nutrición</h5>
+                                        <p class="card-text">Aprende sobre nutrición deportiva y cómo optimizar tu
+                                            dieta para mejores resultados.</p>
+                                        <p><strong>Fecha:</strong> 29 de Julio, 2023</p>
+                                        <p><strong>Hora:</strong> 6:00 PM</p>
+                                        <p><strong>Lugar:</strong> Sala de Conferencias</p>
+                                        <button class="btn btn-primary">Inscribirse</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card event-card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Competencia de Levantamiento de Pesas</h5>
+                                        <p class="card-text">Demuestra tu fuerza en nuestra competencia trimestral
+                                            de levantamiento de pesas.</p>
+                                        <p><strong>Fecha:</strong> 5 de Agosto, 2023</p>
+                                        <p><strong>Hora:</strong> 2:00 PM</p>
+                                        <p><strong>Lugar:</strong> Área de Pesas</p>
+                                        <button class="btn btn-primary">Registrarse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para editar perfil -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editProfileForm">
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="editName" value="Juan Pérez">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editAge" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="editAge" value="32">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editHeight" class="form-label">Altura (cm)</label>
+                        <input type="number" class="form-control" id="editHeight" value="188">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editWeight" class="form-label">Peso (kg)</label>
+                        <input type="number" class="form-control" id="editWeight" value="84">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editExperience" class="form-label">Nivel de Experiencia</label>
+                        <select class="form-select" id="editExperience">
+                            <option>Principiante</option>
+                            <option>Intermedio</option>
+                            <option selected>Avanzado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editGoal" class="form-label">Objetivo</label>
+                        <select class="form-select" id="editGoal">
+                            <option>Pérdida de Peso</option>
+                            <option selected>Ganancia Muscular</option>
+                            <option>Mantenimiento</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="saveProfileChanges()">Guardar
+                    Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2024 Gimnasio. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function loadFile(event) {
+        const image = document.getElementById('profile-pic');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+
+    function saveProfileChanges() {
+        alert("Cambios guardados exitosamente");
+        $('#editProfileModal').modal('hide');
+    }
+
+    // Gráfico de peso
+    var weightCtx = document.getElementById('weightChart').getContext('2d');
+    var weightChart = new Chart(weightCtx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Peso (kg)',
+                data: [90, 88, 87, 86, 85, 84],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Progreso de Peso'
+                }
+            }
+        }
+    });
+
+    // Gráfico de fuerza
+    var strengthCtx = document.getElementById('strengthChart').getContext('2d');
+    var strengthChart = new Chart(strengthCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Press de Banca', 'Sentadillas', 'Peso Muerto'],
+            datasets: [{
+                label: 'Peso Máximo (kg)',
+                data: [100, 120, 140],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Progreso de Fuerza'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

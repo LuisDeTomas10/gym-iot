@@ -1,0 +1,1033 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/modules/app/home/home.css">
+
+<style>
+    /* Capitalizar nombres de días y meses */
+    .fc .fc-toolbar-title,
+    /* Mes en el header */
+    .fc .fc-daygrid-day-top,
+    /* Nombres de los días */
+    .fc .fc-daygrid-day-number {
+        /* Números de los días */
+        text-transform: capitalize;
+    }
+</style>
+
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6">Bienvenido a tu Dashboard de Fitness</h1>
+    <!-- Tarjetas de actividades -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div class="rounded-lg shadow-sm p-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Quemado de grasa</h3>
+                <svg class="icon text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                </svg>
+            </div>
+            <p class="text-2xl font-bold">300 kcal</p>
+            <p class="text-sm text-gray-500">+20.1% que ayer</p>
+            <div class="progress-bar mt-2">
+                <div class="progress-bar-fill" style="width: 33%;"></div>
+            </div>
+        </div>
+        <div class="rounded-lg shadow-sm p-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Cardio</h3>
+                <svg class="icon text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                    </path>
+                </svg>
+            </div>
+            <p class="text-2xl font-bold">400 kcal</p>
+            <p class="text-sm text-gray-500">+15.5% que ayer</p>
+            <div class="progress-bar mt-2">
+                <div class="progress-bar-fill" style="width: 40%;"></div>
+            </div>
+        </div>
+        <div class="rounded-lg shadow-sm p-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Musculación</h3>
+                <svg class="icon text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+                </svg>
+            </div>
+            <p class="text-2xl font-bold">250 kcal</p>
+            <p class="text-sm text-gray-500">+5.2% que ayer</p>
+            <div class="progress-bar mt-2">
+                <div class="progress-bar-fill" style="width: 25%;"></div>
+            </div>
+        </div>
+        <div class="rounded-lg shadow-sm p-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Flexibilidad</h3>
+                <svg class="icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16.024 3.977c4.778 4.779 4.754 12.522-.054 17.331a.997.997 0 01-1.418 0c-4.778-4.779-4.754-12.522.054-17.331a.997.997 0 011.418 0zm-7.071 7.072c1.415 1.414 1.419 3.706.012 5.124a.999.999 0 01-1.422-1.406 1.999 1.999 0 00-.006-2.748c-1.417-1.415-3.71-1.419-5.126-.012a1 1 0 01-1.406-1.422c1.415-1.414 3.707-1.418 5.124-.012.718.718 1.127 1.66 1.224 2.576z">
+                    </path>
+                </svg>
+            </div>
+            <p class="text-2xl font-bold">150 kcal</p>
+            <p class="text-sm text-gray-500">+10.0% que ayer</p>
+            <div class="progress-bar mt-2">
+                <div class="progress-bar-fill" style="width: 15%;"></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Tu suscripción -->
+    <div class="rounded-lg shadow-sm mb-6 p-4 bg-white">
+        <h2 class="text-2xl font-bold mb-4">Tu Suscripción</h2>
+        <p class="text-xl font-semibold mb-2">Plan Premium</p>
+        <p class="mb-2">Fecha de inicio: <span class="font-medium">01/09/2024</span></p>
+        <p class="mb-4">Fecha de fin: <span class="font-medium">24/09/2024</span></p>
+        <p class="mb-4">Tiempo restante: 23 días</p>
+        <div class="progress-bar mb-4">
+            <div class="progress-bar-fill" style="width: 77%;"></div>
+        </div>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Renovar Suscripción</button>
+    </div>
+
+
+    <!-- Tarjetas de promoción, oferta e información -->
+    {{!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <!-- Tarjeta de Promoción especial -->
+        <div class="card">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Promoción especial</h3>
+                <svg class="icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"></path>
+                </svg>
+            </div>
+            <img src="/assets/app/home/Promocion.png" alt="Promoción especial" class="w-full h-44 object-contain mb-4">
+            <p class="text-2xl font-bold">¡50% de descuento!</p>
+            <p class="text-sm text-gray-500 mb-4">En tu primera inscripción mensual.</p>
+            <a href="url-de-la-pagina-de-promocion.html"
+                class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Ver Promoción
+            </a>
+        </div>
+
+        <!-- Tarjeta de Pack Nutricional -->
+        <div class="card">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Oferta del mes: Pack Nutricional</h3>
+                <svg class="icon text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"></path>
+                </svg>
+            </div>
+            <img src="/assets/app/home/Pack Nutricional.png" alt="Pack Nutricional"
+                class="w-full h-44 object-contain mb-4">
+            <p class="text-2xl font-bold">Pack Nutricional</p>
+            <p class="text-sm text-gray-500 mb-4">Incluye proteínas y snacks saludables.</p>
+            <a href="url-de-la-pagina-de-promocion.html"
+                class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                Ir a Promoción
+            </a>
+        </div>
+
+        <!-- Tarjeta de Pack de gimnasio -->
+        <div class="card">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Pack de Gimnasio</h3>
+                <svg class="icon text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"></path>
+                </svg>
+            </div>
+            <img src="/assets/app/home/Pack de Gimnasio.png" alt="Pack de Gimnasio"
+                class="w-full h-44 object-contain mb-4">
+            <p class="text-2xl font-bold">Pack de Gimnasio</p>
+            <p class="text-sm text-gray-500 mb-4">Incluye pesas, bandas elásticas y más.</p>
+            <a href="url-de-la-pagina-del-pack.html" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+                Ver más detalles
+            </a>
+        </div>
+    </div> --}}
+
+    <div id="carouselExampleIndicators" class="carousel slide position-relative mb-6" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Tarjeta grupo 1 -->
+            <div class="carousel-item active">
+                <div class="row">
+                    <!-- Tarjeta 1 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 border-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Promoción especial</h3>
+                                <svg class="icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Promocion.png" alt="Promoción especial"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-blue-600">¡50% de descuento!</p>
+                            <p class="text-sm text-gray-700 mb-4">En tu primera inscripción mensual.</p>
+                            <a href="url-de-la-pagina-de-promocion.html"
+                                class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                                Ver Promoción
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 border-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Oferta del mes: Pack Nutricional</h3>
+                                <svg class="icon text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Pack Nutricional.png" alt="Pack Nutricional"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-green-600">Pack Nutricional</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye proteínas y snacks saludables.</p>
+                            <a href="url-de-la-pagina-de-promocion.html"
+                                class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                                Ir a Promoción
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 border-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Pack de Gimnasio</h3>
+                                <svg class="icon text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Pack de Gimnasio.png" alt="Pack de Gimnasio"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-purple-600">Pack de Gimnasio</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye pesas, bandas elásticas y más.</p>
+                            <a href="url-de-la-pagina-del-pack.html"
+                                class="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
+                                Ver más detalles
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 border-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Oferta especial: Equipo de Yoga</h3>
+                                <svg class="icon text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Pack de Gimnasio.png" alt="Pack de Gimnasio"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-blue-600">Kit de Yoga</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye colchoneta, bloques y más.</p>
+                            <a href="url-de-la-pagina-de-yoga.html"
+                                class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+                                Ver más detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- <!-- Tarjeta grupo 1 -->
+            <div class="carousel-item">
+                <div class="row">
+                    <!-- Tarjeta 1 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 shadow-lg border-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Promoción especial</h3>
+                                <svg class="icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Promocion.png" alt="Promoción especial"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-blue-600">¡50% de descuento!</p>
+                            <p class="text-sm text-gray-700 mb-4">En tu primera inscripción mensual.</p>
+                            <a href="url-de-la-pagina-de-promocion.html"
+                                class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                                Ver Promoción
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 shadow-lg border-0" style="background-color: #f0fff4;">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Oferta del mes: Pack Nutricional</h3>
+                                <svg class="icon text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Pack Nutricional.png" alt="Pack Nutricional"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-green-600">Pack Nutricional</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye proteínas y snacks saludables.</p>
+                            <a href="url-de-la-pagina-de-promocion.html"
+                                class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                                Ir a Promoción
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 shadow-lg border-0" style="background-color: #f5f0ff;">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Pack de Gimnasio</h3>
+                                <svg class="icon text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/Pack de Gimnasio.png" alt="Pack de Gimnasio"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-purple-600">Pack de Gimnasio</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye pesas, bandas elásticas y más.</p>
+                            <a href="url-de-la-pagina-del-pack.html"
+                                class="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
+                                Ver más detalles
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="col-md-3">
+                        <div class="card p-4 shadow-lg border-0" style="background-color: #e7f0ff;">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-semibold">Oferta especial: Equipo de Yoga</h3>
+                                <svg class="icon text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v8m4-4H8"></path>
+                                </svg>
+                            </div>
+                            <img src="/assets/app/home/EquipoDeYoga.png" alt="Equipo de Yoga"
+                                class="w-full h-44 object-contain mb-4">
+                            <p class="text-2xl font-bold text-blue-600">Kit de Yoga</p>
+                            <p class="text-sm text-gray-700 mb-4">Incluye colchoneta, bloques y más.</p>
+                            <a href="url-de-la-pagina-de-yoga.html"
+                                class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+                                Ver más detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+
+        <!-- Botones de control -->
+        <button class="carousel-control-prev" style="width: 3%;" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" style="width: 3%;" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    {{!-- Plan de rutinas --}}
+    <div class="rounded-lg shadow-sm mb-6 p-4">
+        <h2 class="text-3xl font-bold mb-6">Plan de Rutinas</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Rutina 1 -->
+            <div class="card rounded-lg overflow-hidden">
+                <img src="https://th.bing.com/th/id/R.f4a75c9936022e9c772e8e55e7070331?rik=ePMgCmo89Ens3A&pid=ImgRaw&r=0"
+                    alt="Rutina Principiantes" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold mb-2">Rutina para Principiantes</h3>
+                    <p class="text-gray-700 mb-4">Perfecta para quienes están empezando con el ejercicio. Incluye
+                        ejercicios básicos de cardio y fuerza.</p>
+                    <ul class="list-disc pl-5 mb-4 text-sm">
+                        <li>Cardio: 10 minutos</li>
+                        <li>Sentadillas: 3 series de 12 repeticiones</li>
+                        <li>Plancha: 3 series de 30 segundos</li>
+                        <li>Abdominales: 3 series de 15 repeticiones</li>
+                    </ul>
+                    <a href="#" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 block text-center">Ver
+                        Rutina Completa</a>
+                </div>
+            </div>
+
+            <!-- Rutina 2 -->
+            <div class="card rounded-lg overflow-hidden">
+                <img src="https://th.bing.com/th/id/OIP._MyVleUFKGPsYL3FbzoUjwHaE6?rs=1&pid=ImgDetMain"
+                    alt="Rutina Quema Grasa" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold mb-2">Rutina de Quema de Grasa</h3>
+                    <p class="text-gray-700 mb-4">Diseñada para perder grasa y mejorar tu resistencia con ejercicios de
+                        alta intensidad.</p>
+                    <ul class="list-disc pl-5 mb-4 text-sm">
+                        <li>HIIT: 20 minutos</li>
+                        <li>Saltos de tijera: 4 series de 20 repeticiones</li>
+                        <li>Burpees: 4 series de 10 repeticiones</li>
+                        <li>Mountain climbers: 3 series de 30 segundos</li>
+                    </ul>
+                    <a href="#"
+                        class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 block text-center">Ver
+                        Rutina Completa</a>
+                </div>
+            </div>
+
+            <!-- Rutina 3 -->
+            <div class="card rounded-lg overflow-hidden">
+                <img src="https://th.bing.com/th/id/OIP.glCTzDF1LWCRAnABtpfapQAAAA?rs=1&pid=ImgDetMain"
+                    alt="Rutina Musculacion" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold mb-2">Rutina de Musculación</h3>
+                    <p class="text-gray-700 mb-4">Enfocada en el aumento de masa muscular mediante ejercicios de fuerza
+                        y pesas.</p>
+                    <ul class="list-disc pl-5 mb-4 text-sm">
+                        <li>Press de banca: 4 series de 8 repeticiones</li>
+                        <li>Sentadilla con peso: 4 series de 10 repeticiones</li>
+                        <li>Remo con barra: 4 series de 8 repeticiones</li>
+                        <li>Press militar: 4 series de 8 repeticiones</li>
+                    </ul>
+                    <a href="#" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 block text-center">Ver
+                        Rutina Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Gráficos -->
+    {{!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="rounded-lg shadow-sm p-4">
+            <h2>Calorías Quemadas</h2>
+            <label for="calories-date-range">Rango de fechas:</label>
+            <input type="date" id="calories-start-date">
+            <input type="date" id="calories-end-date">
+            <br>
+            <label for="calories-chart-type">Tipo de gráfico:</label>
+            <select id="calories-chart-type">
+                <option value="daily">Diario</option>
+                <option value="weekly">Semanal</option>
+            </select>
+            <canvas id="calories-chart"></canvas>
+        </div>
+        <div class="rounded-lg shadow-sm p-4">
+            <h2>Progreso de Peso</h2>
+            <label for="weight-period">Período:</label>
+            <select id="weight-period">
+                <option value="1m">Último mes</option>
+                <option value="3m">Últimos 3 meses</option>
+                <option value="6m">Últimos 6 meses</option>
+                <option value="1y">Último año</option>
+            </select>
+            <canvas id="weight-chart"></canvas>
+        </div>
+    </div> --}}
+
+
+    <!-- Planes de suscripción -->
+    {{!-- <h2 class="text-2xl font-bold mb-4">Planes de Suscripción</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="card bg-blue-100">
+            <h3 class="text-xl font-semibold mb-2">Básico</h3>
+            <p class="text-2xl font-bold mb-4">$29.99/mes</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Acceso básico al gimnasio</li>
+                <li>Clases grupales limitadas</li>
+            </ul>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Seleccionar
+                Plan</button>
+        </div>
+        <div class="card bg-green-100">
+            <h3 class="text-xl font-semibold mb-2">Premium</h3>
+            <p class="text-2xl font-bold mb-4">$49.99/mes</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Acceso completo al gimnasio</li>
+                <li>Clases grupales ilimitadas</li>
+                <li>Entrenador personal (1 sesión/mes)</li>
+            </ul>
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full">Seleccionar
+                Plan</button>
+        </div>
+        <div class="card bg-purple-100">
+            <h3 class="text-xl font-semibold mb-2">VIP</h3>
+            <p class="text-2xl font-bold mb-4">$99.99/mes</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Acceso completo al gimnasio</li>
+                <li>Clases grupales ilimitadas</li>
+                <li>Entrenador personal (4 sesiones/mes)</li>
+                <li>Nutricionista</li>
+            </ul>
+            <button class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 w-full">Seleccionar
+                Plan</button>
+        </div>
+    </div> --}}
+
+    <div class="flex space-x-6">
+        <!-- Beneficios del ejercicio -->
+        <div class="w-1/2 bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Beneficios del Ejercicio</h2>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200 border-b">
+                            <th class="py-2 px-4 text-gray-700">Beneficio</th>
+                            <th class="py-2 px-4 text-gray-700">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                    <span class="text-gray-800">Salud cardiovascular</span>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4 text-gray-600">Mejora la función cardíaca y reduce el riesgo de
+                                enfermedades del corazón.</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon text-blue-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z">
+                                        </path>
+                                    </svg>
+                                    <span class="text-gray-800">Fuerza muscular</span>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4 text-gray-600">Aumenta la masa muscular y mejora la resistencia
+                                física.</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon text-purple-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                                        </path>
+                                    </svg>
+                                    <span class="text-gray-800">Reducción del estrés</span>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4 text-gray-600">Ayuda a reducir los niveles de estrés y mejora el
+                                estado de ánimo.</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="icon text-yellow-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 17.75l-6.12 3.218a1 1 0 01-1.463-1.065l1.168-6.813L1.233 9.597a1 1 0 01.553-1.705l6.86-1.002L9.768.887a1 1 0 011.856 0l3.153 6.704 6.86 1.002a1 1 0 01.553 1.705l-5.31 5.656 1.168 6.813a1 1 0 01-1.463 1.065L12 17.75z">
+                                        </path>
+                                    </svg>
+                                    <span class="text-gray-800">Mejora del rendimiento</span>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4 text-gray-600">Aumenta la eficiencia y efectividad en tus
+                                actividades diarias.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Alimentos -->
+        <div class="w-1/2 bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4 text-black">Alimentos Saludables</h2>
+                <div class="space-y-4">
+                    <!-- Carne roja -->
+                    <div class="flex items-start space-x-4 pb-4">
+                        <img class="w-32 h-32 object-contain rounded-lg border-2 " src="/assets/app/home/carne_roja.png"
+                            alt="Carne Roja">
+                        <div>
+                            <h3 class="text-xl font-semibold text-black">Carne Roja</h3>
+                            <p class="text-gray-700">Fuente rica en proteínas y hierro, esencial para la formación
+                                de glóbulos rojos y la reparación muscular.</p>
+                        </div>
+                    </div>
+                    <!-- Brócoli -->
+                    <div class="flex items-start space-x-4">
+                        <img class="w-32 h-32 object-contain rounded-lg border-2 " src="/assets/app/home/brocoli.png"
+                            alt="Brócoli">
+                        <div>
+                            <h3 class="text-xl font-semibold text-black">Brócoli</h3>
+                            <p class="text-gray-700">Vegetal rico en vitaminas C y K, fibra, y antioxidantes, que
+                                ayuda a fortalecer el sistema inmunológico y mejorar la digestión.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Ejercicios semanales -->
+    <div class="bg-white p-6 rounded-lg shadow-sm mt-10 mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicios Semanales</h2>
+
+        <!-- Filtro por día -->
+        <div class="mb-4">
+            <label for="day-filter" class="block mb-2">Filtra por día:</label>
+            <select id="day-filter"
+                class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="all">Todos los días</option>
+                <option value="lunes">Lunes</option>
+                <option value="martes">Martes</option>
+                <option value="miercoles">Miércoles</option>
+                <option value="jueves">Jueves</option>
+                <option value="viernes">Viernes</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+            </select>
+        </div>
+
+        <!-- Tabla de ejercicios por día -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm text-gray-700">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="py-3 px-4 font-semibold">Día</th>
+                        <th class="py-3 px-4 font-semibold">Grupo Muscular</th>
+                        <th class="py-3 px-4 font-semibold">Ejercicio</th>
+                        <th class="py-3 px-4 font-semibold">Repeticiones</th>
+                        <th class="py-3 px-4 font-semibold">Series</th>
+                        <th class="py-3 px-4 font-semibold">Duración</th>
+                        <th class="py-3 px-4 font-semibold">Nivel de Dificultad</th>
+                        <th class="py-3 px-4 font-semibold">Equipo</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <!-- Lunes -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="3">Lunes</td>
+                        <td class="py-4 px-4">Pecho</td>
+                        <td class="py-4 px-4">Press de banca</td>
+                        <td class="py-4 px-4">10-12 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">45 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Pesas</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Pecho</td>
+                        <td class="py-4 px-4">Press inclinado</td>
+                        <td class="py-4 px-4">10-12 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">45 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Pesas</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Tríceps</td>
+                        <td class="py-4 px-4">Fondos de tríceps</td>
+                        <td class="py-4 px-4">12-15 rep</td>
+                        <td class="py-4 px-4">3</td>
+                        <td class="py-4 px-4">30 min</td>
+                        <td class="py-4 px-4">Principiante</td>
+                        <td class="py-4 px-4">Peso corporal</td>
+                    </tr>
+
+                    <!-- Martes -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="3">Martes</td>
+                        <td class="py-4 px-4">Espalda</td>
+                        <td class="py-4 px-4">Dominadas</td>
+                        <td class="py-4 px-4">8-10 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">60 min</td>
+                        <td class="py-4 px-4">Avanzado</td>
+                        <td class="py-4 px-4">Barra</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Espalda</td>
+                        <td class="py-4 px-4">Remo con barra</td>
+                        <td class="py-4 px-4">12 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">45 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Barra y pesas</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Bíceps</td>
+                        <td class="py-4 px-4">Curl de bíceps</td>
+                        <td class="py-4 px-4">10-12 rep</td>
+                        <td class="py-4 px-4">3</td>
+                        <td class="py-4 px-4">30 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Mancuernas</td>
+                    </tr>
+
+                    <!-- Miércoles -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="3">Miércoles</td>
+                        <td class="py-4 px-4">Piernas</td>
+                        <td class="py-4 px-4">Sentadillas</td>
+                        <td class="py-4 px-4">15 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">50 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Barra</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Piernas</td>
+                        <td class="py-4 px-4">Prensa de pierna</td>
+                        <td class="py-4 px-4">12 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">45 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Máquina</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-4">Hombros</td>
+                        <td class="py-4 px-4">Press militar</td>
+                        <td class="py-4 px-4">10-12 rep</td>
+                        <td class="py-4 px-4">4</td>
+                        <td class="py-4 px-4">40 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Barra</td>
+                    </tr>
+
+                    <!-- Jueves -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="1">Jueves</td>
+                        <td class="py-4 px-4">Cardio</td>
+                        <td class="py-4 px-4">Correr</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">30 min</td>
+                        <td class="py-4 px-4">Principiante</td>
+                        <td class="py-4 px-4">Cinta de correr</td>
+                    </tr>
+
+                    <!-- Viernes -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="1">Viernes</td>
+                        <td class="py-4 px-4">Full Body</td>
+                        <td class="py-4 px-4">Circuito completo</td>
+                        <td class="py-4 px-4">12 rep por ejercicio</td>
+                        <td class="py-4 px-4">3 circuitos</td>
+                        <td class="py-4 px-4">60 min</td>
+                        <td class="py-4 px-4">Avanzado</td>
+                        <td class="py-4 px-4">Pesas, esterilla</td>
+                    </tr>
+
+                    <!-- Sábado -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="1">Sábado</td>
+                        <td class="py-4 px-4">Cardio</td>
+                        <td class="py-4 px-4">Bicicleta</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">45 min</td>
+                        <td class="py-4 px-4">Intermedio</td>
+                        <td class="py-4 px-4">Bicicleta estática</td>
+                    </tr>
+
+                    <!-- Domingo -->
+                    <tr>
+                        <td class="py-4 px-4" rowspan="1">Domingo</td>
+                        <td class="py-4 px-4">Descanso</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">Todo el día</td>
+                        <td class="py-4 px-4">-</td>
+                        <td class="py-4 px-4">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="rounded-lg shadow-sm mb-6 p-4 bg-white">
+        <h2 class="text-3xl font-bold text-center mb-4">Asistencia Mensual</h2>
+        <div id="calendar"></div>
+
+        <!-- Modal para detalles del día -->
+        <div class="modal fade" id="dayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalles del Día</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="day-details"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
+
+<script>
+    // Función para generar datos aleatorios de calorías
+    function generateCaloriesData(start, end, type) {
+        let labels = [];
+        let data = [];
+        let currentDate = new Date(start);
+        while (currentDate <= end) {
+            if (type === 'daily') {
+                labels.push(currentDate.toLocaleDateString());
+                data.push(Math.floor(Math.random() * 500) + 200);
+            } else if (type === 'weekly' && currentDate.getDay() === 0) {
+                labels.push(`Semana ${getWeekNumber(currentDate)}`);
+                data.push(Math.floor(Math.random() * 2000) + 1500);
+            }
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return { labels, data };
+    }
+
+    // Función para obtener el número de semana
+    function getWeekNumber(d) {
+        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        return weekNo;
+    }
+
+    // Función para generar datos aleatorios de peso
+    function generateWeightData(period) {
+        let labels = [];
+        let data = [];
+        let endDate = new Date();
+        let startDate = new Date();
+        let interval = 1;
+
+        switch (period) {
+            case '1m':
+                startDate.setMonth(startDate.getMonth() - 1);
+                interval = 2;
+                break;
+            case '3m':
+                startDate.setMonth(startDate.getMonth() - 3);
+                interval = 7;
+                break;
+            case '6m':
+                startDate.setMonth(startDate.getMonth() - 6);
+                interval = 14;
+                break;
+            case '1y':
+                startDate.setFullYear(startDate.getFullYear() - 1);
+                interval = 30;
+                break;
+        }
+
+        let currentDate = new Date(startDate);
+        let currentWeight = 80;
+
+        while (currentDate <= endDate) {
+            labels.push(currentDate.toLocaleDateString());
+            data.push(currentWeight);
+            currentDate.setDate(currentDate.getDate() + interval);
+            currentWeight += (Math.random() - 0.5) * 0.5;
+        }
+
+        return { labels, data };
+    }
+
+    // Inicializar gráfico de calorías
+    let caloriesChart;
+    function initCaloriesChart() {
+        const ctx = document.getElementById('calories-chart').getContext('2d');
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - 7);
+        const endDate = new Date();
+        const { labels, data } = generateCaloriesData(startDate, endDate, 'daily');
+
+        caloriesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Calorías quemadas',
+                    data: data,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // Inicializar gráfico de peso
+    let weightChart;
+    function initWeightChart() {
+        const ctx = document.getElementById('weight-chart').getContext('2d');
+        const { labels, data } = generateWeightData('1m');
+
+        weightChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Peso (kg)',
+                    data: data,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    }
+
+    // Actualizar gráfico de calorías
+    function updateCaloriesChart() {
+        const startDate = new Date(document.getElementById('calories-start-date').value);
+        const endDate = new Date(document.getElementById('calories-end-date').value);
+        const chartType = document.getElementById('calories-chart-type').value;
+        const { labels, data } = generateCaloriesData(startDate, endDate, chartType);
+
+        caloriesChart.data.labels = labels;
+        caloriesChart.data.datasets[0].data = data;
+        caloriesChart.update();
+    }
+
+    // Actualizar gráfico de peso
+    function updateWeightChart() {
+        const period = document.getElementById('weight-period').value;
+        const { labels, data } = generateWeightData(period);
+
+        weightChart.data.labels = labels;
+        weightChart.data.datasets[0].data = data;
+        weightChart.update();
+    }
+
+    // Inicializar gráficos y agregar event listeners
+    document.addEventListener('DOMContentLoaded', function () {
+        initCaloriesChart();
+        initWeightChart();
+
+        document.getElementById('calories-start-date').valueAsDate = new Date(new Date().setDate(new Date().getDate() - 7));
+        document.getElementById('calories-end-date').valueAsDate = new Date();
+
+        document.getElementById('calories-start-date').addEventListener('change', updateCaloriesChart);
+        document.getElementById('calories-end-date').addEventListener('change', updateCaloriesChart);
+        document.getElementById('calories-chart-type').addEventListener('change', updateCaloriesChart);
+        document.getElementById('weight-period').addEventListener('change', updateWeightChart);
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'es',
+            initialView: 'dayGridMonth',
+            events: [
+                {
+                    title: 'Asistido',
+                    start: '2024-09-05',
+                    color: 'green'
+                },
+                {
+                    title: 'Faltó',
+                    start: '2024-09-10',
+                    color: 'red'
+                },
+                {
+                    title: 'Asistido',
+                    start: '2024-09-12',
+                    color: 'green'
+                },
+                {
+                    title: 'Faltó',
+                    start: '2024-09-15',
+                    color: 'red'
+                }
+            ],
+            dateClick: function (info) {
+                var selectedDay = info.dateStr;
+                var eventsOnDay = calendar.getEvents().filter(event => event.startStr === selectedDay);
+
+                var detailsText = `Día seleccionado: ${selectedDay}`;
+                if (eventsOnDay.length > 0) {
+                    eventsOnDay.forEach(event => {
+                        detailsText += `<br>Estado: ${event.title}`;
+                    });
+                } else {
+                    detailsText += `<br>No hay eventos registrados para este día.`;
+                }
+
+                document.getElementById('day-details').innerHTML = detailsText;
+
+                // Mostrar el modal
+                var modal = new bootstrap.Modal(document.getElementById('dayModal'));
+                modal.show();
+            }
+        });
+
+        calendar.render();
+    });
+</script>

@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="/modules/app/payment/payment.css">
+<div class="payment-container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Pago Seguro</h2>
+            <p class="card-description">Seleccione su método de pago preferido</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+        <form id="paymentForm">
+            <div class="form-group">
+                <div class="radio-group" id="paymentMethods">
+                    <label class="radio-item active">
+                        <input type="radio" name="paymentMethod" value="credit" checked>
+                        <svg class="radio-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                            </path>
+                        </svg>
+                        Crédito
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="paymentMethod" value="debit">
+                        <svg class="radio-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                            </path>
+                        </svg>
+                        Débito
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="paymentMethod" value="paypal">
+                        <svg class="radio-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                        PayPal
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="paymentMethod" value="yape">
+                        <svg class="radio-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                        Yape
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="paymentMethod" value="plin">
+                        <svg class="radio-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                        Plin
+                    </label>
+                </div>
+            </div>
+
+            <div id="cardDetails">
+                <div class="form-group">
+                    <label for="cardNumber" class="label">Número de tarjeta</label>
+                    <input type="text" id="cardNumber" class="input" placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="form-group" style="display: flex; gap: 1rem;">
+                    <div style="flex: 2;">
+                        <label for="expiryDate" class="label">Fecha de caducidad</label>
+                        <input type="text" id="expiryDate" class="input" placeholder="MM/AA">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="cvc" class="label">CVC</label>
+                        <input type="text" id="cvc" class="input" placeholder="CVC">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cardName" class="label">Nombre del titular</label>
+                    <input type="text" id="cardName" class="input" placeholder="Nombre completo">
+                </div>
+            </div>
+
+            <div id="yapeDetails" style="display: none;">
+                <div class="qr-code">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KTqlcJNSMJ81jIlNqEo1GhZZkQcjdH.png"
+                        alt="Yape QR Code">
+                </div>
+                <div class="form-group">
+                    <label for="yapeSecurityCode" class="label">Código de seguridad de Yape</label>
+                    <input type="text" id="yapeSecurityCode" class="input" placeholder="Ingrese el código de seguridad">
+                </div>
+            </div>
+
+            <div id="plinDetails" style="display: none;">
+                <div class="qr-code">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F6wpv7QPKSf9YVxkcsG1jYzeewlRY4.png"
+                        alt="Plin QR Code">
+                </div>
+                <div class="form-group">
+                    <label for="plinSecurityCode" class="label">Código de seguridad de Plin</label>
+                    <input type="text" id="plinSecurityCode" class="input" placeholder="Ingrese el código de seguridad">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="label">Correo electrónico</label>
+                <input type="email" id="email" class="input" placeholder="ejemplo@dominio.com">
+            </div>
+
+            <div class="order-summary">
+                <p><span>Producto:</span> <span>Camiseta de algodón</span></p>
+                <p><span>Cantidad:</span> <span>1</span></p>
+                <p><span>Total:</span> <span>$29.99</span></p>
+            </div>
+
+            <button type="submit" class="button">Pagar de forma segura</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="/modules/app/payment/payment.js"></script>

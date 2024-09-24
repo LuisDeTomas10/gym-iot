@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">Filtros</h5>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="search-input" class="form-control mb-3" placeholder="Buscar productos...">
+                    <div class="mb-3">
+                        <label for="category-select" class="form-label">Categoría:</label>
+                        <select id="category-select" class="form-select">
+                            <option value="">Todas las categorías</option>
+                        </select>
+                    </div>
+                    <div id="brand-filters" class="mb-3"></div>
+                    <div class="mb-3">
+                        <label for="price-range" class="form-label">Rango de Precio: <span
+                                id="price-value">$1000</span></label>
+                        <input type="range" id="price-range" class="form-range" min="0" max="1000" step="10"
+                            value="1000">
+                    </div>
+                    <button id="apply-filters" class="btn btn-primary w-100">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div id="products" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Vista Rápida</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="quickViewContent"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/modules/app/products/products.js"></script>

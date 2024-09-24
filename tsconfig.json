@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2016",
+    "strict": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "rootDir": "./public/modules",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  // "include": ["src/**/*.ts", "public/**/*.ts", "views/**/*.ts"],
+  "include": ["public/modules/**/*.ts"],
+  "exclude": ["node_modules"]
+}
