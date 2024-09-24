@@ -51,10 +51,10 @@ const handleLogin = () => {
             if (data.success) {
                 const roleID = data.user.role.id;
                 console.log(data.user);
-                if (roleID === 1) {
+                if (roleID === 2) {
                     window.location.href = '/admin/dashboard';
                 }
-                else if (roleID === 2) {
+                else if (roleID === 1) {
                     window.location.href = '/';
                 }
             }
