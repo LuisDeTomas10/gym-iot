@@ -454,76 +454,80 @@
         <div class="w-full md:w-1/2 bg-white rounded-lg shadow-sm overflow-hidden">
             <div class="p-6">
                 <h2 class="text-2xl font-bold mb-4 text-gray-800">Beneficios del Ejercicio</h2>
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-gray-200 border-b">
-                            <th class="py-2 px-4 text-gray-700">Beneficio</th>
-                            <th class="py-2 px-4 text-gray-700">Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b">
-                            <td class="py-2 px-4">
-                                <div class="flex items-center space-x-2">
-                                    <svg class="icon text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-gray-800">Salud cardiovascular</span>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 text-gray-600">Mejora la función cardíaca y reduce el riesgo de
-                                enfermedades del corazón.</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4">
-                                <div class="flex items-center space-x-2">
-                                    <svg class="icon text-blue-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-gray-800">Fuerza muscular</span>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 text-gray-600">Aumenta la masa muscular y mejora la resistencia
-                                física.</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4">
-                                <div class="flex items-center space-x-2">
-                                    <svg class="icon text-purple-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-gray-800">Reducción del estrés</span>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 text-gray-600">Ayuda a reducir los niveles de estrés y mejora el
-                                estado de ánimo.</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4">
-                                <div class="flex items-center space-x-3">
-                                    <svg class="icon text-yellow-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 17.75l-6.12 3.218a1 1 0 01-1.463-1.065l1.168-6.813L1.233 9.597a1 1 0 01.553-1.705l6.86-1.002L9.768.887a1 1 0 011.856 0l3.153 6.704 6.86 1.002a1 1 0 01.553 1.705l-5.31 5.656 1.168 6.813a1 1 0 01-1.463 1.065L12 17.75z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-gray-800">Mejora del rendimiento</span>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 text-gray-600">Aumenta la eficiencia y efectividad en tus
-                                actividades diarias.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="overflow-x-auto">
+                    <table class="table-auto min-w-full text-left border-collapse">
+                        <thead class="bg-gray-200">
+                            <tr class="border-b">
+                                <th class="py-2 px-4 text-gray-700 sticky top-0 bg-gray-200">Beneficio</th>
+                                <!-- Sticky -->
+                                <th class="py-2 px-4 text-gray-700 sticky top-0 bg-gray-200">Descripción</th>
+                                <!-- Sticky -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2 px-4">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="icon text-red-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-gray-800">Salud cardiovascular</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-4 text-gray-600">Mejora la función cardíaca y reduce el riesgo de
+                                    enfermedades del corazón.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 px-4">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="icon text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-gray-800">Fuerza muscular</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-4 text-gray-600">Aumenta la masa muscular y mejora la resistencia
+                                    física.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 px-4">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="icon text-purple-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-gray-800">Reducción del estrés</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-4 text-gray-600">Ayuda a reducir los niveles de estrés y mejora el
+                                    estado de ánimo.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 px-4">
+                                    <div class="flex items-center space-x-3">
+                                        <svg class="icon text-yellow-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 17.75l-6.12 3.218a1 1 0 01-1.463-1.065l1.168-6.813L1.233 9.597a1 1 0 01.553-1.705l6.86-1.002L9.768.887a1 1 0 011.856 0l3.153 6.704 6.86 1.002a1 1 0 01.553 1.705l-5.31 5.656 1.168 6.813a1 1 0 01-1.463 1.065L12 17.75z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-gray-800">Mejora del rendimiento</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-4 text-gray-600">Aumenta la eficiencia y efectividad en tus
+                                    actividades diarias.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -578,18 +582,19 @@
         </div>
 
         <!-- Tabla de ejercicios por día -->
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto" style="height: 30rem;">
             <table class="min-w-full text-left text-sm text-gray-700">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th class="py-3 px-4 font-semibold">Día</th>
-                        <th class="py-3 px-4 font-semibold">Grupo Muscular</th>
-                        <th class="py-3 px-4 font-semibold">Ejercicio</th>
-                        <th class="py-3 px-4 font-semibold">Repeticiones</th>
-                        <th class="py-3 px-4 font-semibold">Series</th>
-                        <th class="py-3 px-4 font-semibold">Duración</th>
-                        <th class="py-3 px-4 font-semibold">Nivel de Dificultad</th>
-                        <th class="py-3 px-4 font-semibold">Equipo</th>
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Día</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Grupo Muscular</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Ejercicio</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Repeticiones</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Series</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Duración</th> <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Nivel de Dificultad</th>
+                        <!-- Sticky -->
+                        <th class="py-3 px-4 font-semibold sticky top-0 bg-gray-50">Equipo</th> <!-- Sticky -->
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -734,6 +739,7 @@
             </table>
         </div>
     </div>
+
 
     <div class="rounded-lg shadow-sm mb-6 p-4 bg-white">
         <h2 class="text-3xl font-bold text-center mb-4">Asistencia Mensual</h2>

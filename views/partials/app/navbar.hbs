@@ -1,12 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary z-3">
     <div class="container">
-        <a class="navbar-brand" href="/">Tienda de Gimnasia</a>
+        <a class="navbar-brand" href="/">Gym IoT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item"></li>
+                <a class="nav-link {{#if (eq currentPath '/')}}active{{/if}}" href="/">
+                    <i class="fa-solid fa-house"></i> Inicio
+                </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link {{#if (eq currentPath '/products')}}active{{/if}}" href="/products">
                         <i class="fa-solid fa-dumbbell"></i> Productos
