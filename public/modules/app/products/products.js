@@ -305,7 +305,7 @@ function mostrarVistaRapida(id) {
         .map((relacionado) => `
               <div class="swiper-slide">
                 <div class="card">
-                  <img src="${relacionado.imagen[0]}" class="card-img-top" alt="${relacionado.nombre}" style="width: 100%; height: 10rem">
+                  <img src="${relacionado.imagen[0]}" class="card-img-top" alt="${relacionado.nombre}" style="width: 100%; height: 12rem">
                   <div class="card-body">
                     <h5 class="card-title">${relacionado.nombre}</h5>
                     <p class="card-text"><small class="text-muted">${relacionado.marca}</small><br><strong>$${relacionado.precio}</strong></p>
@@ -339,11 +339,22 @@ function mostrarVistaRapida(id) {
     });
     // Inicializar Swiper para productos relacionados
     const relatedSwiper = new Swiper('.relatedSwiper', {
-        slidesPerView: 3,
+        slidesPerView: 1,
         spaceBetween: 10,
         navigation: {
             nextEl: '.relatedSwiper .swiper-button-next',
             prevEl: '.relatedSwiper .swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            992: {
+                slidesPerView: 3,
+            },
+            1200: {
+                slidesPerView: 4,
+            },
         },
         loop: true,
     });
