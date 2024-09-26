@@ -1,4 +1,4 @@
-import { User } from '../entities/user';
+import { User } from '../../entities/user';
 import { AppDataSource } from '../../config/data-source';
 
 export const getUserByEmail = async (email: string): Promise<User | null> => {

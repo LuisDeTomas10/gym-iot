@@ -740,10 +740,42 @@
         </div>
     </div>
 
-
     <div class="rounded-lg shadow-sm mb-6 p-4 bg-white">
         <h2 class="text-3xl font-bold text-center mb-4">Asistencia Mensual</h2>
-        <div id="calendar"></div>
+        <!-- Botón de Agregar Asistencia -->
+        <div class="text-center mb-4">
+            <button id="openAddAttendanceModal" class="btn btn-primary">Agregar Asistencia</button>
+        </div>
+
+        <!-- Calendario -->
+        <div id="calendar" class="grid grid-cols-7 gap-4"></div>
+
+        <!-- Modal para agregar asistencia -->
+        <div class="modal fade" id="attendanceModal" tabindex="-1" aria-labelledby="attendanceModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="attendanceModalLabel">Agregar Asistencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="alert-container"></div>
+                    <div class="modal-body">
+                        <form id="attendanceForm">
+                            <div class="mb-3">
+                                <label for="activity" class="form-label">Actividad Realizada</label>
+                                <textarea class="form-control" id="activity" rows="3"
+                                    placeholder="Describe la actividad realizada"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="saveAttendance">Guardar Asistencia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal para detalles del día -->
         <div class="modal fade" id="dayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -768,171 +800,8 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-    // Función para generar datos aleatorios de calorías
-    function generateCaloriesData(start, end, type) {
-        let labels = [];
-        let data = [];
-        let currentDate = new Date(start);
-        while (currentDate <= end) {
-            if (type === 'daily') {
-                labels.push(currentDate.toLocaleDateString());
-                data.push(Math.floor(Math.random() * 500) + 200);
-            } else if (type === 'weekly' && currentDate.getDay() === 0) {
-                labels.push(`Semana ${getWeekNumber(currentDate)}`);
-                data.push(Math.floor(Math.random() * 2000) + 1500);
-            }
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-        return { labels, data };
-    }
-
-    // Función para obtener el número de semana
-    function getWeekNumber(d) {
-        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-        return weekNo;
-    }
-
-    // Función para generar datos aleatorios de peso
-    function generateWeightData(period) {
-        let labels = [];
-        let data = [];
-        let endDate = new Date();
-        let startDate = new Date();
-        let interval = 1;
-
-        switch (period) {
-            case '1m':
-                startDate.setMonth(startDate.getMonth() - 1);
-                interval = 2;
-                break;
-            case '3m':
-                startDate.setMonth(startDate.getMonth() - 3);
-                interval = 7;
-                break;
-            case '6m':
-                startDate.setMonth(startDate.getMonth() - 6);
-                interval = 14;
-                break;
-            case '1y':
-                startDate.setFullYear(startDate.getFullYear() - 1);
-                interval = 30;
-                break;
-        }
-
-        let currentDate = new Date(startDate);
-        let currentWeight = 80;
-
-        while (currentDate <= endDate) {
-            labels.push(currentDate.toLocaleDateString());
-            data.push(currentWeight);
-            currentDate.setDate(currentDate.getDate() + interval);
-            currentWeight += (Math.random() - 0.5) * 0.5;
-        }
-
-        return { labels, data };
-    }
-
-    // Inicializar gráfico de calorías
-    let caloriesChart;
-    function initCaloriesChart() {
-        const ctx = document.getElementById('calories-chart').getContext('2d');
-        const startDate = new Date();
-        startDate.setDate(startDate.getDate() - 7);
-        const endDate = new Date();
-        const { labels, data } = generateCaloriesData(startDate, endDate, 'daily');
-
-        caloriesChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Calorías quemadas',
-                    data: data,
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-
-    // Inicializar gráfico de peso
-    let weightChart;
-    function initWeightChart() {
-        const ctx = document.getElementById('weight-chart').getContext('2d');
-        const { labels, data } = generateWeightData('1m');
-
-        weightChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Peso (kg)',
-                    data: data,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-    }
-
-    // Actualizar gráfico de calorías
-    function updateCaloriesChart() {
-        const startDate = new Date(document.getElementById('calories-start-date').value);
-        const endDate = new Date(document.getElementById('calories-end-date').value);
-        const chartType = document.getElementById('calories-chart-type').value;
-        const { labels, data } = generateCaloriesData(startDate, endDate, chartType);
-
-        caloriesChart.data.labels = labels;
-        caloriesChart.data.datasets[0].data = data;
-        caloriesChart.update();
-    }
-
-    // Actualizar gráfico de peso
-    function updateWeightChart() {
-        const period = document.getElementById('weight-period').value;
-        const { labels, data } = generateWeightData(period);
-
-        weightChart.data.labels = labels;
-        weightChart.data.datasets[0].data = data;
-        weightChart.update();
-    }
-
-    // Inicializar gráficos y agregar event listeners
-    document.addEventListener('DOMContentLoaded', function () {
-        initCaloriesChart();
-        initWeightChart();
-
-        document.getElementById('calories-start-date').valueAsDate = new Date(new Date().setDate(new Date().getDate() - 7));
-        document.getElementById('calories-end-date').valueAsDate = new Date();
-
-        document.getElementById('calories-start-date').addEventListener('change', updateCaloriesChart);
-        document.getElementById('calories-end-date').addEventListener('change', updateCaloriesChart);
-        document.getElementById('calories-chart-type').addEventListener('change', updateCaloriesChart);
-        document.getElementById('weight-period').addEventListener('change', updateWeightChart);
-    });
-</script>
+<script src="/modules/app/home/calendar.js"></script>
+<script src="/modules/app/home/assistance.js"></script>
 
 <script>
     var swiper = new Swiper('.mySwiper', {
@@ -947,59 +816,5 @@
                 spaceBetween: 10
             }
         }
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: 'es',
-            initialView: 'dayGridMonth',
-            events: [
-                {
-                    title: 'Asistido',
-                    start: '2024-09-05',
-                    color: 'green'
-                },
-                {
-                    title: 'Faltó',
-                    start: '2024-09-10',
-                    color: 'red'
-                },
-                {
-                    title: 'Asistido',
-                    start: '2024-09-12',
-                    color: 'green'
-                },
-                {
-                    title: 'Faltó',
-                    start: '2024-09-15',
-                    color: 'red'
-                }
-            ],
-            dateClick: function (info) {
-                var selectedDay = info.dateStr;
-                var eventsOnDay = calendar.getEvents().filter(event => event.startStr === selectedDay);
-
-                var detailsText = `Día seleccionado: ${selectedDay}`;
-                if (eventsOnDay.length > 0) {
-                    eventsOnDay.forEach(event => {
-                        detailsText += `<br>Estado: ${event.title}`;
-                    });
-                } else {
-                    detailsText += `<br>No hay eventos registrados para este día.`;
-                }
-
-                document.getElementById('day-details').innerHTML = detailsText;
-
-                // Mostrar el modal
-                var modal = new bootstrap.Modal(document.getElementById('dayModal'));
-                modal.show();
-            }
-        });
-
-        calendar.render();
     });
 </script>

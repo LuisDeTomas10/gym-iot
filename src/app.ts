@@ -6,10 +6,10 @@ import path from 'path';
 import { engine } from 'express-handlebars';
 
 import authRoutes from './auth/routes/auth-route';
+import assistanceRoutes from './assistance/routes/assistance-route';
 
 export const app: Application = express();
 
-// Configuring handlebars as the template engine
 app.engine(
   '.hbs',
   engine({
@@ -23,7 +23,6 @@ app.engine(
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, '../views'));
 
-// Configuring middleware and static files
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(morgan('dev'));
@@ -32,7 +31,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Routes pages
 app.get('/auth/login', (req, res) => {
   res.render('auth/login', { title: 'Login | Devioz GYM', layout: 'auth' });
 });
@@ -51,7 +49,6 @@ app.get('/admin/dashboard', (req, res) => {
   });
 });
 
-// Routes pages public
 app.get('/', (req, res) => {
   res.render('app/home', {
     title: 'Home | Devioz GYM',
@@ -102,6 +99,7 @@ app.get('/reports', (req, res) => {
 
 // Routes for the API
 app.use('/api/auth', authRoutes);
+app.use('/api/assistance', assistanceRoutes);
 
 // Error handling
 app.use((err: any, _req: any, res: any, _next: any) => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 document.addEventListener('DOMContentLoaded', function () {
   const paymentMethods = document.getElementById('paymentMethods');
   const cardDetails = document.getElementById('cardDetails');

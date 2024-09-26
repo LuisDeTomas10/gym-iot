@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '../entities/user';
+import { User } from '../../entities/user';
 import { createUser, getUserByEmail } from '../repository/user-repository';
 import { ERROR_AUTH_TYPES } from '../../errores/error-types';
 import { getRoleById } from '../repository/role-repository';

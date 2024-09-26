@@ -1,4 +1,4 @@
-import { Role } from '../entities/roles';
+import { Role } from '../../entities/roles';
 import { AppDataSource } from '../../config/data-source';
 
 export const getRoleById = async (roleId: number): Promise<Role> => {
