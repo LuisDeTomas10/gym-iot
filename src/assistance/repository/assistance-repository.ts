@@ -36,3 +36,9 @@ export const getAssistanceById = async (
   const assistanceRepository = AppDataSource.getRepository(Assistance);
   return await assistanceRepository.findOne({ where: { id } });
 };
+
+export const deleteAssistance = async (id: number): Promise<boolean> => {
+  const assistanceRepository = AppDataSource.getRepository(Assistance);
+  const result = await assistanceRepository.delete(id);
+  return result.affected === 1;
+};

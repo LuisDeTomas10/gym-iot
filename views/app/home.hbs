@@ -2,6 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <link rel="stylesheet" href="/modules/app/home/home.css">
 
 
@@ -762,8 +763,30 @@
                     <div id="alert-container"></div>
                     <div class="modal-body">
                         <form id="attendanceForm">
+                            <!-- Tipo de Actividad -->
                             <div class="mb-3">
-                                <label for="activity" class="form-label">Actividad Realizada</label>
+                                <label for="activityType" class="form-label">Tipo de Actividad</label>
+                                <select class="form-control" id="activityType">
+                                    <option value="push-ups">Push-ups</option>
+                                    <option value="sit-ups">Sit-ups</option>
+                                    <option value="squats">Squats</option>
+                                    <option value="lunges">Lunges</option>
+                                    <option value="plank">Plank</option>
+                                    <option value="burpees">Burpees</option>
+                                    <!-- Puedes añadir más opciones aquí -->
+                                </select>
+                            </div>
+
+                            <!-- Cantidad de Repeticiones -->
+                            <div class="mb-3">
+                                <label for="repetitions" class="form-label">Cantidad de Repeticiones</label>
+                                <input type="number" class="form-control" id="repetitions" min="1"
+                                    placeholder="Número de repeticiones">
+                            </div>
+
+                            <!-- Descripción o Detalles de la Actividad -->
+                            <div class="mb-3">
+                                <label for="activity" class="form-label">Descripción de la Actividad</label>
                                 <textarea class="form-control" id="activity" rows="3"
                                     placeholder="Describe la actividad realizada"></textarea>
                             </div>
@@ -794,12 +817,76 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal de Actualización -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Actualizar Actividad</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="activityTypeInput" class="form-label">Tipo de Actividad</label>
+                                <input type="text" class="form-control" id="activityTypeInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="repetitionsInput" class="form-label">Repeticiones</label>
+                                <input type="number" class="form-control" id="repetitionsInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descriptionInput" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descriptionInput" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkInTimeInput" class="form-label">Hora de entrada:</label><br />
+                                <input class="form-control" type="time" id="checkInTimeInput" />
+                            </div>
+                        </form>
+                        <div id="errorMessage" style="color: red; display: none;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="saveUpdatedActivity()">Guardar
+                            Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal de Confirmación de Eliminación -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que deseas eliminar esta actividad?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="deleteActivityButton"
+                            onclick="deleteActivity()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script src="/modules/app/home/calendar.js"></script>
 <script src="/modules/app/home/assistance.js"></script>
 

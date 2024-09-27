@@ -14,6 +14,12 @@ export class Assistance {
   @Column()
   user_id: number;
 
+  @Column({ type: 'varchar', length: 100 })
+  activity_type: string;
+
+  @Column({ type: 'int' })
+  repetitions: number;
+
   @Column({ type: 'text' })
   activity: string;
 
